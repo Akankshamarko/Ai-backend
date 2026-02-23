@@ -1,8 +1,14 @@
 const express = require("express");
-const airoutes = require("./airoutes");
 const app = express();
-app.use(express.json());
-app.use("/api/ai",airoutes);
-app.listen(3000,()=>{
-    console.log("server running on port 3000");
+
+const airoutes = require("./routes/airoutes");
+
+app.use("/api", airoutes);
+
+app.get("/", (req, res) => {
+  res.send("Server is running 🚀");
+});
+
+app.listen(3000, () => {
+  console.log("Server started on port 3000");
 });
